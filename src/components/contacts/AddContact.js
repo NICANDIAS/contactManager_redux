@@ -54,7 +54,6 @@ class AddContact extends Component {
 
   render() {
     const { name, email, phone, errors, success } = this.state
-    // console.log(this.props.route)
 
     return (
       <>
