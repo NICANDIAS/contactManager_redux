@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Consumer } from '../../context';
+import axios from 'axios';
 
 //Font-Awesome
 import {FaArrowDown} from 'react-icons/fa';
@@ -12,7 +13,7 @@ class Contact extends Component {
     };
 
     onDeleteClick = (id, dispatch) => {
-        dispatch({type: 'DELETE_CONTACT', payload: id})
+        axios.delete(`http://jsonplaceholder.typicode.com/users/${id}`).then(res => dispatch({type: 'DELETE_CONTACT', payload: id}));
     }
 
     render() {
