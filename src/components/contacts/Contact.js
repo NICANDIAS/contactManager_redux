@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Consumer } from '../../context';
 import axios from 'axios';
 
 //Font-Awesome
-import {FaArrowDown} from 'react-icons/fa';
-import {FaTimes} from 'react-icons/fa';
+import {FaArrowDown, FaTimes, FaPencilAlt} from 'react-icons/fa';
 
 class Contact extends Component {
     state = {
@@ -31,6 +31,13 @@ class Contact extends Component {
                             <h4>{name} 
                                 <FaArrowDown onClick={() => this.setState({ showContactInfo: !this.state.showContactInfo  })} style={{cursor: 'pointer'}} />
                                 <FaTimes onClick={this.onDeleteClick.bind(this, id, dispatch)} style={{cursor: 'pointer', float: 'right', color: 'red'}} />
+                                <Link to={`contact/edit/${id}`}>
+                                    <FaPencilAlt style={{
+                                        cursor: 'pointer',
+                                        float: 'right',
+                                        color: 'black'
+                                    }}/>
+                                </Link>
                             </h4>
                             {showContactInfo ? (
                                 <ul className="list-group">
