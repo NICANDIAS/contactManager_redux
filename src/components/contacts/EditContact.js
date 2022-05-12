@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import { Navigate } from "react-router-dom"
-import { Consumer } from "../../context"
 import TextInputGroup from "../layout/TextInputGroup"
 import { useParams } from "react-router-dom"
 //import { v4 as uuid } from "uuid"
@@ -81,7 +80,7 @@ class EditContact extends Component {
     return (
       <>
         {success && <Navigate to="/" />}
-        <Consumer>
+        <>
           {value => {
             const { dispatch } = value
             return (
@@ -120,7 +119,7 @@ class EditContact extends Component {
               </div>
             )
           }}
-        </Consumer>
+        </>
       </>
     )
   }

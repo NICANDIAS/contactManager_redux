@@ -1,8 +1,8 @@
 import React, { Component } from "react"
-import { Navigate } from "react-router-dom"
-import { Consumer } from "../../context"
 import TextInputGroup from "../layout/TextInputGroup"
 //import { v4 as uuid } from "uuid"
+//import { Navigate } from "react-router-dom"
+
 import axios from "axios"
 
 class AddContact extends Component {
@@ -11,7 +11,7 @@ class AddContact extends Component {
     email: "",
     phone: "",
     errors: {},
-    success: false,
+   // success: false,
   }
 
   onSubmit = async (dispatch, e) => {
@@ -52,59 +52,51 @@ class AddContact extends Component {
       email: "",
       phone: "",
       errors: {},
-      success: true,
+      //success: true,
     })
   }
   onChange = e => this.setState({ [e.target.name]: e.target.value })
 
   render() {
-    const { name, email, phone, errors, success } = this.state
-
+    const { name, email, phone, errors,  } = this.state
+    // {success && <Navigate to="/" />}
+    
+    const { dispatch } = this.state
     return (
-      <>
-        {success && <Navigate to="/" />}
-        <Consumer>
-          {value => {
-            const { dispatch } = value
-            return (
-              <div className="card mb-3 ">
-                <div className="card-header">Edit Contact</div>
-                <div className="card-body">
-                  <form onSubmit={this.onSubmit.bind(this, dispatch)}>
-                    <TextInputGroup
-                      label="Name"
-                      name="name"
-                      placeholder="Enter Name ..."
-                      value={name}
-                      onChange={this.onChange}
-                      error={errors.name}
-                    />
-                    <TextInputGroup
-                      label="Email"
-                      name="email"
-                      type="email"
-                      placeholder="Enter Email ..."
-                      value={email}
-                      onChange={this.onChange}
-                      error={errors.email}
-                    />
-                    <TextInputGroup
-                      label="Phone"
-                      name="phone"
-                      placeholder="Enter Phone ..."
-                      value={phone}
-                      onChange={this.onChange}
-                      error={errors.phone}
-                    />
-                    <input type="submit" value="Add Contact" className="btn btn-light btn-block"></input>
-                  </form>
-                </div>
-              </div>
-            )
-          }}
-        </Consumer>
-      </>
-    )
+      <div className="card mb-3 ">
+        <div className="card-header">Edit Contact</div>
+        <div className="card-body">
+          <form onSubmit={this.onSubmit.bind(this, dispatch)}>
+            <TextInputGroup
+              label="Name"
+              name="name"
+              placeholder="Enter Name ..."
+              value={name}
+              onChange={this.onChange}
+              error={errors.name}
+            />
+            <TextInputGroup
+              label="Email"
+              name="email"
+              type="email"
+              placeholder="Enter Email ..."
+              value={email}
+              onChange={this.onChange}
+              error={errors.email}
+            />
+            <TextInputGroup
+              label="Phone"
+              name="phone"
+              placeholder="Enter Phone ..."
+              value={phone}
+              onChange={this.onChange}
+              error={errors.phone}
+            />
+            <input type="submit" value="Add Contact" className="btn btn-light btn-block"></input>
+          </form>
+        </div>
+      </div>
+    )  
   }
 }
 
