@@ -3,8 +3,6 @@ import TextInputGroup from "../layout/TextInputGroup"
 //import { v4 as uuid } from "uuid"
 //import { Navigate } from "react-router-dom"
 
-import axios from "axios"
-
 class AddContact extends Component {
   state = {
     name: "",
@@ -39,12 +37,7 @@ class AddContact extends Component {
       phone,
     }
 
-    //Add Contact with Api
-    const res = await axios.post('http://jsonplaceholder.typicode.com/users', newContact);
-    dispatch({ type: "ADD_CONTACT", payload: res.data });
-
-    //Add contect without network
-    //dispatch({ type: "ADD_CONTACT", payload: newContact })
+    //Add Contact///
 
     //Clear state
     this.setState({
