@@ -7,12 +7,16 @@ import About from './components/pages/About';
 import NotFound from './components/pages/NotFound';
 import Test from './components/test/Test';
 
+import { Provider  } from 'react-redux';
+import store from './store';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
   return (
+    <Provider store={store}>
       <BrowserRouter>
         <div className="App">
         <Header branding="Contact Manager" />
@@ -28,6 +32,7 @@ function App() {
         </div>    
       </div>
       </BrowserRouter>
+    </Provider>
   );
 }
 
